@@ -19,10 +19,15 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        var button: Button = findViewById(R.id.botao_cadastrar)
-
-        button.setOnClickListener {
+        var buttonCadastrar: Button = findViewById(R.id.botao_cadastrar)
+        buttonCadastrar.setOnClickListener {
             val intent = Intent(this, Cadastrar::class.java)
+            startActivity(intent)
+        }
+
+        var buttonEntrar: Button = findViewById(R.id.botao_entrar)
+        buttonEntrar.setOnClickListener {
+            val intent = Intent(this, HomePage::class.java)
             startActivity(intent)
         }
     }
