@@ -91,7 +91,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/botao_cadastrar"
         android:layout_width="210dp"
         android:layout_height="60dp"
         android:text="Cadastrar"
