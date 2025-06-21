@@ -17,17 +17,22 @@ class CadastroSonoActivity : AppCompatActivity() {
         val inputInicio = findViewById<EditText>(R.id.inputHorarioInicio)
         val inputFim = findViewById<EditText>(R.id.inputHorarioFim)
         val btnSalvar = findViewById<Button>(R.id.btnSalvarSono)
+        val db = DatabaseHelper(this)
 
         btnSalvar.setOnClickListener {
-            val inicio = inputInicio.text.toString()
-            val fim = inputFim.text.toString()
+            val inicio = inputInicio.text.toString().trim()
+            val fim = inputFim.text.toString().trim()
 
             if (inicio.isEmpty() || fim.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
             } else {
-                // Aqui você pode salvar os dados no banco ou ViewModel
-                Toast.makeText(this, "Sono salvo com sucesso!", Toast.LENGTH_SHORT).show()
-                finish()
+                val resultado = db.inserirSono(inicio, fim)
+                if (resultado != -1L) {
+                    Toast.makeText(this, "Sono salvo com sucesso!", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(this, "Erro ao salvar sono.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

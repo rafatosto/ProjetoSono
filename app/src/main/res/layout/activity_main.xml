@@ -5,17 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:background="#CCF2F7">
 
-    <TextView
-        android:id="@+id/logoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logo"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp"/>
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logo_app_sono" />
 
     <EditText
         android:id="@+id/editTextUsuario"
@@ -56,7 +55,7 @@
         android:layout_marginBottom="30dp"/>
 
     <!--<TextView
-        android:id="@+id/cadastrarLabel"
+        android:id="@+id/cadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cadastrar"

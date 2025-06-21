@@ -19,17 +19,23 @@ class CadastroAlimentacaoActivity : AppCompatActivity() {
         val inputQtd = findViewById<EditText>(R.id.inputQuantidade)
         val btnSalvar = findViewById<Button>(R.id.btnSalvarAlimentacao)
 
+        val db = DatabaseHelper(this)
+
         btnSalvar.setOnClickListener {
-            val horario = inputHorario.text.toString()
-            val tipo = inputTipo.text.toString()
-            val qtd = inputQtd.text.toString()
+            val horario = inputHorario.text.toString().trim()
+            val tipo = inputTipo.text.toString().trim()
+            val qtd = inputQtd.text.toString().trim()
 
             if (horario.isEmpty() || tipo.isEmpty() || qtd.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
             } else {
-                // Salvar alimentação
-                Toast.makeText(this, "Alimentação salva com sucesso!", Toast.LENGTH_SHORT).show()
-                finish()
+                val resultado = db.inserirAlimentacao(horario, tipo, qtd)
+                if (resultado != -1L) {
+                    Toast.makeText(this, "Alimentação salva com sucesso!", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(this, "Erro ao salvar alimentação.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
